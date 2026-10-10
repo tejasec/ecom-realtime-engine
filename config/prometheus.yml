@@ -1,0 +1,17 @@
+# Prometheus Configuration for AI System Observability
+global:
+  scrape_interval: 5s
+  evaluation_interval: 5s
+
+scrape_configs:
+  - job_name: 'aisd_fastapi_app'
+    metrics_path: '/metrics'
+    static_configs:
+      - targets: ['fastapi-app:8000']
+        labels:
+          application: 'ecommerce_recommendation_api'
+          environment: 'production'
+
+  - job_name: 'prometheus_self'
+    static_configs:
+      - targets: ['localhost:9090']
