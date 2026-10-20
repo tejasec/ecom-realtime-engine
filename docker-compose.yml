@@ -10,7 +10,7 @@ services:
       dockerfile: Dockerfile
     container_name: aisd_fastapi_app
     ports:
-      - "8000:8000"
+      - "8010:8000"
     environment:
       - POSTGRES_USER=aisd_user
       - POSTGRES_PASSWORD=aisd_password
@@ -21,7 +21,7 @@ services:
       - REDIS_PORT=6379
       - KAFKA_BOOTSTRAP_SERVERS=kafka-broker:9092
     volumes:
-      - ./app:/app
+      - ./app:/app/app
     depends_on:
       postgres-db:
         condition: service_healthy
